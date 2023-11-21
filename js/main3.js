@@ -8,7 +8,7 @@
  * Copyright 2016, Codrops
  * http://www.codrops.com
  */
-window.alert("Welcome to the 2018 Advent Calendar! Click on a date to see what's inside. Enjoy!");
+
 
 ;(function(window) {
 
@@ -644,3 +644,17 @@ window.alert("Welcome to the 2018 Advent Calendar! Click on a date to see what's
 	init();
 
 })(window);
+
+
+(() => {
+	window.alert("Welcome to the 2018 Advent Calendar! Click on a date to see what's inside. Enjoy!");
+
+	let inactiveCubes = document.querySelectorAll('.cube');
+
+	inactiveCubes.forEach((cube) => {
+		cube.addEventListener('click', () => {
+			window.alert("This date is not yet available. Come back later!");
+		});
+	});
+
+})();

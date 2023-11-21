@@ -8,6 +8,8 @@
  * Copyright 2016, Codrops
  * http://www.codrops.com
  */
+window.alert("Welcome to the 2018 Advent Calendar! Click on a date to see what's inside. Enjoy!");
+
 ;(function(window) {
 
 	'use strict';

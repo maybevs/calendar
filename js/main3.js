@@ -657,6 +657,10 @@
 		});
 
 		cube.removeAttribute('data-inactive');
+
+		Array.from(cube.attributes).forEach((attribute) => {
+			console.log(`Attribute name: ${attribute.name}, Attribute value: ${attribute.value}`);
+		});		
 	});
 
 	/**

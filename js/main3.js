@@ -12,6 +12,12 @@
 (() => {
 	window.alert("Welcome to the 2018 Advent Calendar! Click on a date to see what's inside. Enjoy! 3");
 
+	let date = new Date();
+	let dayOfMonth = date.getDate();
+	let month = date.getMonth();
+
+	console.log(`Day of month: ${dayOfMonth}, Month: ${month}`);
+
 	let inactiveCubes = document.querySelectorAll('.cube');
 
 	inactiveCubes.forEach((cube) => {

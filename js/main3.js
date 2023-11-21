@@ -9,6 +9,55 @@
  * http://www.codrops.com
  */
 
+(() => {
+	window.alert("Welcome to the 2018 Advent Calendar! Click on a date to see what's inside. Enjoy! 3");
+
+	let inactiveCubes = document.querySelectorAll('.cube');
+
+	inactiveCubes.forEach((cube) => {
+		cube.addEventListener('click', () => {
+			window.alert("This date is not yet available. Come back later!");
+		});
+
+		cube.removeAttribute('data-inactive');
+
+
+		Array.from(cube.attributes).forEach((attribute) => {
+			console.log(`Attribute name: ${attribute.name}, Attribute value: ${attribute.value}`);
+		});		
+	});
+
+	/**
+	 * 					
+	 * 				<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Peaceful World"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Impossible"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Everything"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Hung Up"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Live Freely"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Tolerable Planet"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Normal"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Superhero"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="New Weariness"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="The Sinner"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Intellectual Wealth"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Limiting Principle"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Quaintly Free"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="On A Level"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Experiences"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Entrenched"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Happiness"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Working Jobs"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Spending Billions"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Principle Of Having"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Enemies"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Better World"></div>
+					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
+					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
+					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
+	 */
+
+})();
+
 
 ;(function(window) {
 
@@ -646,50 +695,3 @@
 })(window);
 
 
-(() => {
-	window.alert("Welcome to the 2018 Advent Calendar! Click on a date to see what's inside. Enjoy! 3");
-
-	let inactiveCubes = document.querySelectorAll('.cube');
-
-	inactiveCubes.forEach((cube) => {
-		cube.addEventListener('click', () => {
-			window.alert("This date is not yet available. Come back later!");
-		});
-
-		cube.removeAttribute('data-inactive');
-
-		Array.from(cube.attributes).forEach((attribute) => {
-			console.log(`Attribute name: ${attribute.name}, Attribute value: ${attribute.value}`);
-		});		
-	});
-
-	/**
-	 * 					
-	 * 				<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Peaceful World"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Impossible"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Everything"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Hung Up"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Live Freely"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Tolerable Planet"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Normal"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Superhero"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="New Weariness"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="The Sinner"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Intellectual Wealth"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Limiting Principle"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Quaintly Free"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="On A Level"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Experiences"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Entrenched"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Happiness"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Working Jobs"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Spending Billions"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Principle Of Having"></div>
-					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Enemies"></div>
-					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Better World"></div>
-					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
-					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
-					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
-	 */
-
-})();

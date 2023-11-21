@@ -655,6 +655,8 @@
 		cube.addEventListener('click', () => {
 			window.alert("This date is not yet available. Come back later!");
 		});
+
+		cube.setAttribute('data-inactive', '');
 	});
 
 })();

@@ -18,14 +18,47 @@
 
 	console.log(`Day of month: ${dayOfMonth}, Month: ${month}`);
 
+
 	let inactiveCubes = document.querySelectorAll('.cube');
 
-	inactiveCubes.forEach((cube) => {
-		cube.addEventListener('click', () => {
-			window.alert("This date is not yet available. Come back later!");
-		});
+	days = {
+		"Peaceful World":1,
+		"Impossible":2,
+		"Everything":3,
+		"Hung Up":4,
+		"Live Freely":5,
+		"Tolerable Planet":6,
+		"Normal":7,
+		"Superhero":8,
+		"New Weariness":9,
+		"The Sinner":10,
+		"Intellectual Wealth":11,
+		"Limiting Principle":12,
+		"Quaintly Free":13,
+		"On A Level":14,
+		"Experiences":15,
+		"Entrenched":16,
+		"Happiness":17,
+		"Working Jobs":18,
+		"Spending Billions":19,
+		"Principle Of Having":20,
+		"Enemies":21,
+		"Better World":22,
+		"Coming soon":23,
+		"Coming soon":24,
+		"Coming soon":25,
+	}
 
-		cube.removeAttribute('data-inactive');
+	inactiveCubes.forEach((cube) => {
+		//cube.addEventListener('click', () => {
+		//		window.alert("This date is not yet available. Come back later!");
+		//});
+		let cube_date = days[cube.getAttribute('data-title')];
+
+		if(month === 10 && cube_date <= dayOfMonth )  {
+			cube.removeAttribute('data-inactive');
+		}
+		
 
 
 		Array.from(cube.attributes).forEach((attribute) => {

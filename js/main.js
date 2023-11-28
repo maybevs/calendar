@@ -8,6 +8,94 @@
  * Copyright 2016, Codrops
  * http://www.codrops.com
  */
+
+(() => {
+	let date = new Date();
+	let dayOfMonth = date.getDate();
+	let month = date.getMonth();
+
+	console.log(`Day of month: ${dayOfMonth}, Month: ${month}`);
+
+
+	let inactiveCubes = document.querySelectorAll('.cube');
+
+	days = {
+		"Peaceful World":1,
+		"Impossible":2,
+		"Everything":3,
+		"Hung Up":4,
+		"Live Freely":5,
+		"Tolerable Planet":6,
+		"Normal":7,
+		"Superhero":8,
+		"New Weariness":9,
+		"The Sinner":10,
+		"Intellectual Wealth":11,
+		"Limiting Principle":12,
+		"Quaintly Free":13,
+		"On A Level":14,
+		"Experiences":15,
+		"Entrenched":16,
+		"Happiness":17,
+		"Working Jobs":18,
+		"Spending Billions":19,
+		"Principle Of Having":20,
+		"Enemies":21,
+		"Better World":22,
+		"Coming soon":23,
+		"Coming soon":24,
+		"Coming soon":25,
+	}
+
+	inactiveCubes.forEach((cube) => {
+		//cube.addEventListener('click', () => {
+		//		window.alert("This date is not yet available. Come back later!");
+		//});
+		let cube_date = days[cube.getAttribute('data-title')];
+
+		if(month === 10 && cube_date <= dayOfMonth )  {
+			cube.removeAttribute('data-inactive');
+		}
+		
+
+
+		Array.from(cube.attributes).forEach((attribute) => {
+			console.log(`Attribute name: ${attribute.name}, Attribute value: ${attribute.value}`);
+		});		
+	});
+
+	/**
+	 * 					
+	 * 				<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Peaceful World"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Impossible"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Everything"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Hung Up"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Live Freely"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Tolerable Planet"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Normal"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Superhero"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="New Weariness"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="The Sinner"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Intellectual Wealth"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Limiting Principle"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Quaintly Free"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="On A Level"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Experiences"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Entrenched"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Happiness"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Working Jobs"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Spending Billions"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Principle Of Having"></div>
+					<div class="cube" data-inactive data-bg-color="#1c2d3f" data-title="Enemies"></div>
+					<div class="cube" data-inactive data-bg-color="#cc0019" data-title="Better World"></div>
+					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
+					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
+					<div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
+	 */
+
+})();
+
+
 ;(function(window) {
 
 	'use strict';
@@ -92,14 +180,9 @@
 			animationSettings = {
 				targets: this.cube,
 				duration: 500,
-				easing: 'easeOutExpo'
+				easing: 'easeOutQuart',
+				translateZ: type === 1 ? 100 : 0
 			};
-
-		animationSettings.translateZ = {
-			value: type === 1 ? 100 : 0,
-			duration: 900,
-			easing: 'easeOutExpo'
-		};
 
 		switch(dir) {
 			case 0 : // from/to top
@@ -134,22 +217,24 @@
 		this.titlefxSettings = {
 			in: {
 				duration: 800,
-				delay: function(el, index) { return 650 + index*10; },
+				delay: function(el, index) { return 900 + index*20; },
 				easing: 'easeOutExpo',
 				opacity: {
 					duration: 200,
 					value: [0,1],
 					easing:'linear'
 				},
-				translateY: [100,0],
-				rotateZ: function(el, index) { return [anime.random(-20,20), 0]; }
+				rotateZ: function(el, index) { return [anime.random(-10,10), 0]; },
+				translateY: function(el, index) {
+					return [anime.random(-200,-100),0];
+				}
 			},
 			out: {
 				duration: 800,
-				delay: 400,
+				delay: 300,
 				easing: 'easeInExpo',
 				opacity: 0,
-				translateY: 350
+				translateY: -350
 			}
 		};
 	};
@@ -224,7 +309,7 @@
 					self._rotateCalendar(mousepos);
 				});
 			};
-			
+
 			this.handleOrientation = function() {
 				if( self.isOpen ) {
 					return false;
@@ -261,44 +346,34 @@
 			// Show the main container
 			anime({
 				targets: self.el,
-				duration: 1200,
+				duration: 1400,
 				easing: 'easeInOutExpo',
-				opacity: 1,
-				complete: function() {
-					self.isOpen = false;
-					self.isAnimating = false;
-				}
+				opacity: 1
 			});
 
 			for(var i = 0, totalDays = self.days.length; i < totalDays; ++i) {
-				var day = self.days[i];
-				if( self.currentDayIdx === i ) {
-					anime({
-						targets: day.cube,
-						duration: 1200,
-						delay: 1000,
-						easing: 'easeOutExpo',
-						scale: 1,
-						translateY: 0,
-						translateZ: [-1500,0],
-						rotateX: 0,
-						rotateY: 0
-					});
+				var day = self.days[i], isCurrent = self.currentDayIdx === i;
+
+				if( isCurrent ) {
 					day.isRotated = false;
 				}
-				else {
-					anime({
-						targets: day.cube,
-						duration: 1200,
-						delay: 1000,
-						easing: 'easeOutExpo',
-						scale: 1,
-						translateX: 0,
-						translateY: 0,
-						translateZ: [3000,0],
-						rotateY: 0
-					});
-				}
+				
+				anime({
+					targets: day.cube,
+					duration: 500,
+					delay: isCurrent ? 1000 : function(el, index) {
+						return 1100 + anime.random(0,300);
+					},
+					easing: 'easeOutBack',
+					scale: [0,1],
+					translateZ: 0,
+					rotateX: 0,
+					rotateY: 0,
+					complete: isCurrent ? function() {
+						self.isOpen = false;
+						self.isAnimating = false;
+					} : null
+				});
 			}
 		};
 		backCtrl.addEventListener('click', this.backToCalendarFn);
@@ -330,7 +405,6 @@
 				clearTimeout(colortimeout);
 				if( instance.isRotated ) {
 					colortimeout = setTimeout(function() { self._resetBGColor(); }, 35);
-					self._resetBGColor();
 					instance._rotate(ev);
 					self._hidePreviewTitle();
 					instance.isRotated = false;
@@ -350,7 +424,7 @@
 			// Hide the main container
 			anime({
 				targets: self.el,
-				duration: 1200,
+				duration: 1400,
 				easing: 'easeInOutExpo',
 				opacity: 0,
 				complete: function() {
@@ -359,42 +433,23 @@
 			});
 
 			for(var i = 0, totalDays = self.days.length; i < totalDays; ++i) {
-				var day = self.days[i];
+				var day = self.days[i],
+					isCurrent = self.currentDayIdx === i
 
-				if( self.currentDayIdx === i ) {
-					anime({
-						targets: day.cube,
-						duration: 600,
-						delay: 200,
-						easing: 'easeInExpo',
-						scale: 1.1,
-						translateY: -window.innerHeight*2,
-						translateZ: day.currentTransform.translateZ,
-						rotateX: day.currentTransform.rotateX,
-						rotateY: day.currentTransform.rotateY
-					});
-
+				if( isCurrent ) {
 					self._showContent(instance);
 				}
-				else {
-					var bcr = day.cube.getBoundingClientRect();
-					anime({
-						targets: day.cube,
-						duration: 1200,
-						easing: 'easeInOutExpo',
-						scale: 0.1,
-						translateX: function(el, index) {
-							return bcr.left + window.pageXOffset <= window.innerWidth/2 ? anime.random(-800,0) : anime.random(0,800);
-						},
-						translateY: function(el, index) {
-							return bcr.top + window.pageYOffset <= window.innerHeight/2 ? anime.random(-1400,-200) : anime.random(-200,600);
-						},
-						translateZ: -1500,
-						rotateY: function(el, index) {
-							return bcr.left + window.pageXOffset <= window.innerWidth/2 ? anime.random(-40,0) : anime.random(0,40);
-						}
-					});
-				}
+
+				anime({
+					targets: day.cube,
+					duration: 500,
+					delay: isCurrent ? 600 : function() { return anime.random(0,300); },
+					easing: isCurrent ? 'easeOutCubic' : 'easeInBack',
+					scale: 0,
+					translateZ: isCurrent ? -1000 : function() { return anime.random(-1000,-400); },
+					rotateX: isCurrent ? -180 : function() { return anime.random(-180,180); },
+					rotateY: isCurrent ? -180 : function() { return anime.random(-180,180); }
+				});
 			}
 		};
 		instance.cube.querySelector('.cube__side--front').addEventListener('mouseenter', instance.mouseenterFn);
@@ -423,12 +478,12 @@
 		this.dayPreview.style.opacity = 1;
 		this.txtfx.show({
 			in: {
-				duration: 800,
+				duration: 700,
 				delay: function(el, index) { return index*20; },
-				easing: 'easeOutElastic',
+				easing: 'easeOutCirc',
 				opacity: 1,
-				translateY: function(el, index) {
-					return index%2 === 0 ? [-25, 0] : [25, 0];
+				translateX: function(el, index) {
+					return [(50+index*10),0]
 				}
 			}
 		});
@@ -452,12 +507,12 @@
 		content.classList.add('content__block--current');
 
 		day.titlefx.hide();
-		day.titlefx.show(day.titlefxSettings);	
-		
+		day.titlefx.show(day.titlefxSettings);
+
 		anime({
 			targets: [description, meta],
 			duration: 800,
-			delay: function(el, index) { return index === 0 ? 900 : 1000 },
+			delay: function(el, index) { return index === 0 ? 1000 : 1100 },
 			easing: 'easeOutExpo',
 			opacity: [0,1],
 			translateY: [100,0]
@@ -465,7 +520,7 @@
 
 		anime({
 			targets: backCtrl,
-			duration: 1000,
+			duration: 1100,
 			delay: 800,
 			easing: 'easeOutExpo',
 			opacity: [0,1],
@@ -476,10 +531,10 @@
 		anime({
 			targets: contentNumber,
 			duration: 500,
-			delay: 800,
+			delay: 900,
 			easing: 'easeOutExpo',
 			opacity: [0,1],
-			translateX: [100,0]
+			translateX: [-200,0]
 		});
 	};
 
@@ -495,10 +550,10 @@
 		// The content number placeholder animation.
 		anime({
 			targets: contentNumber,
-			duration: 500,
+			duration: 800,
 			easing: 'easeInExpo',
 			opacity: 0,
-			translateX: 100
+			translateX: -200
 		});
 
 		// The back button animation.
@@ -521,6 +576,7 @@
 		});
 
 		// The content title animation.
+		var bcr = day.cube.getBoundingClientRect();
 		day.titlefx.hide(day.titlefxSettings, function() {
 			content.classList.remove('content__block--current');
 		});
@@ -646,8 +702,8 @@
 	var calendarEl = document.querySelector('.calendar'),
 		calendarDays = [].slice.call(calendarEl.children),
 		settings = {
-			snow: false,
-			tilt: true
+			snow: true,
+			tilt: false
 		},
 		bgEl = document.body,
 		defaultBgColor = bgEl.style.backgroundColor,
@@ -674,3 +730,5 @@
 	init();
 
 })(window);
+
+

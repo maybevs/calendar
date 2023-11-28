@@ -8,49 +8,49 @@
  * Copyright 2016, Codrops
  * http://www.codrops.com
  */
-
 (() => {
 	let date = new Date();
 	let dayOfMonth = date.getDate();
 	let month = date.getMonth();
 
-	console.log(`Day of month: ${dayOfMonth}, Month: ${month}`);
+	//console.log(`Day of month: ${dayOfMonth}, Month: ${month}`);
 
 
 	let inactiveCubes = document.querySelectorAll('.cube');
 
 	days = {
-		"Peaceful World":1,
-		"Impossible":2,
-		"Everything":3,
-		"Hung Up":4,
-		"Live Freely":5,
-		"Tolerable Planet":6,
-		"Normal":7,
-		"Superhero":8,
-		"New Weariness":9,
-		"The Sinner":10,
-		"Intellectual Wealth":11,
-		"Limiting Principle":12,
-		"Quaintly Free":13,
-		"On A Level":14,
-		"Experiences":15,
-		"Entrenched":16,
-		"Happiness":17,
-		"Working Jobs":18,
-		"Spending Billions":19,
-		"Principle Of Having":20,
-		"Enemies":21,
-		"Better World":22,
-		"Coming soon":23,
-		"Coming soon":24,
-		"Coming soon":25,
+		"Celebrate":1,
+		"Empathize":2,
+		"Respect":3,
+		"Embrace":4,
+		"Collaborate":5,
+		"Learn":6,
+		"Grow":7,
+		"Empower":8,
+		"Challenge":9,
+		"Advocate":10,
+		"Inclusive":11,
+		"Belonging":12,
+		"Equity":13,
+		"Justice":14,
+		"Diversity":15,
+		"Unity":16,
+		"Kindness":17,
+		"Compassion":18,
+		"Open Mindness":19,
+		"Acceptance":20,
+		"Appreciation":21,
+		"Gratitude":22,
+		"Hope":23,
+		"Community":24,
+		"Together":25,
 	}
 
 	inactiveCubes.forEach((cube) => {
 		let cube_date = days[cube.getAttribute('data-title')];
 
-		if(month === 11 && cube_date == dayOfMonth )  {
+		//if(month === 10 && cube_date != dayOfMonth )  {
+		if(month === 10 && cube_date == 1 )  {
 			cube.removeAttribute('data-inactive');
 		}
 		
@@ -698,5 +698,3 @@
 	init();
 
 })(window);
-
-

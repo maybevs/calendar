@@ -50,7 +50,7 @@
 	inactiveCubes.forEach((cube) => {
 		let cube_date = days[cube.getAttribute('data-title')];
 
-		if(month === 11 && cube_date <= dayOfMonth )  {
+		if(month === 11 && cube_date == dayOfMonth )  {
 			cube.removeAttribute('data-inactive');
 		}
 		
